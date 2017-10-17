@@ -123,3 +123,17 @@ sudo /usr/local/nginx/sbin/nginx -s reload
 People already using your server won't be affected until their connection closes.
 
 ## Setup OBS
+In Settings -> Stream, select "Custom Streaming Server" for stream type. The URL will be rtmp://server/live, where server is your server. If you're using Amazon EC2, use the Public DNS there.
+
+Pick anything for the stream key.
+![obs server setting](https://serrintine.github.io/StreamDoc/img/obsserver.png "obs server setting")
+
+Then, start streaming as you would with Twitch, but hitting the "Start Streaming" button.
+
+## Play from VLC
+Open VLC 
+![open vlc stream](https://serrintine.github.io/StreamDoc/img/vlcopenstream.png "open vlc stream")
+
+Enter the server URL from above along with the stream key:
+![vlc open stream](https://serrintine.github.io/StreamDoc/img/vlcopenstream1.png "vlc open stream")
+
