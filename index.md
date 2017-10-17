@@ -6,6 +6,7 @@
 5. Setup RTMP server
 6. Edit config file
 7. Setup custom OBS stream
+8. Play from VLC
 
 ## Setup AWS account
 Go to [https://aws.amazon.com/free/](https://aws.amazon.com/free/) to sign up for a free AWS account.
@@ -54,7 +55,7 @@ ssh -i <key file> <user>@<server>
 For example:
 ![SSH](https://serrintine.github.io/StreamDoc/img/ssh.png "SSH")
 
-First get an updated list of software you can get through the package manager. Sudo runs a command as root (all the priviledges), and we need those privileges. You'll need Mercurial (to get the Nginx sources) and Git (for the RTMP module sources). The other things in the list are software packages that Nginx needs.
+First get an updated list of software you can get through the package manager. Sudo runs a command as root (all the privileges), and we need those privileges. You'll need Mercurial (to get the Nginx sources) and Git (for the RTMP module sources). The other things in the list are software packages that Nginx needs.
 
 ```
 sudo apt-get update
@@ -79,6 +80,7 @@ cd nginx
 auto/configure --add-module=../nginx-rtmp-module
 ```
 That should output a lot of things, and complete without errors:
+
 ![configure output](https://serrintine.github.io/StreamDoc/img/postconfig.png "configure output")
 
 Then compile Nginx with the RTMP module:
@@ -86,6 +88,7 @@ Then compile Nginx with the RTMP module:
 make
 ```
 It's going to run for a bit, and finish like this:
+
 ![compile output](https://serrintine.github.io/StreamDoc/img/compiledone.png "compile output")
 
 Get everything copied to the right place:
@@ -102,12 +105,14 @@ cd /usr/local/nginx/conf
 sudo nano nginx.conf
 ```
 You should see something like this:
+
 ![nano](https://serrintine.github.io/StreamDoc/img/nginxconfwithnano.png "nano")
 
 Use arrow keys to get to the bottom of the file,
+
 ![nano](https://serrintine.github.io/StreamDoc/img/nanoconfbottom.png "nano")
 
-Then add this:
+Then add this at the end of the file:
 ```
 rtmp {
   server {
@@ -121,6 +126,8 @@ rtmp {
   }
 }
 ```
+Note that you can right click to paste, like this:
+
 ![nano](https://serrintine.github.io/StreamDoc/img/editedconf.png "nano")
 Save the file with Ctrl+O, then exit Nano with Ctrl+X.
 
@@ -134,14 +141,32 @@ If you ever need to edit the file again, you'll need to reload Nginx for the cha
 sudo /usr/local/nginx/sbin/nginx -s reload
 ```
 People already using your server won't be affected until their connection closes.
+
 ## Setup custom OBS stream
 In Settings -> Stream, select "Custom Streaming Server" for stream type. The URL will be rtmp://server/live, where server is your server. If you're using Amazon EC2, use the Public DNS there.
 
-Pick anything for the stream key.
+Pick anything for the stream key. You'll use it later when getting VLC to play the stream.
 ![obs server setting](https://serrintine.github.io/StreamDoc/img/obsserver.png "obs server setting")
 
-Then, start streaming as you would with Twitch, but hitting the "Start Streaming" button.
+Then, start streaming as you would with Twitch, by hitting the "Start Streaming" button.
 
+Tweaking OBS to make your stream smooth is a lot like handling surprise Rakkhat aggro. The best way forward is to carefully ponder your options while staying calm. 
+
+For all of the encoding options, there are some common fields:
+- Bitrate - How much internet upload bandwidth your stream will use. This value is typically in kbps. Entering 4500 will consume about 4.5 Mbps of upload bandwidth. You don't want to push this anywhere near what your internet provider claims it can handle.
+- Rate Control - You have limited internet bandwidth to upload video, and this option controls how OBS makes quality compromises.
+    - VBR - Variable Bit Rate. Consumed upload bandwidth will hover around the bitrate you give, but can go up or down depending on how much motion there is in the video. Probably the best option.
+    - CBR - Constant Bit Rate. Consumed upload bandwidth will stay at the bitrate you give. If there's more motion, the encoder will drop quality rather than eat more bandwidth, and if there's not much motion, the encoder will eat bandwidth it doesn't need.
+    - CRF - Constant Rate Factor - you don't specify a bitrate. You ask for a quality (lower is better, 23 is a good default), and the encoder eats all the bandwidth it needs to get there. If there's a lot of motion (i.e. Rakkhat has given you a beach ball and you're running in circles screaming), OBS will eat all the bandwidth required to describe that. Good luck.
+- Keyframe Interval - Video encoding saves upload bandwidth by not uploading every frame. Instead, a frame is uploaded, and then the next frames are described in terms of how they differ from the last frame. A keyframe is a complete frame. I've found that auto causes some problems, even though it should be good in theory. A keyframe interval of 3 seconds worked well. 
+
+The higher you can set your bitrate without killing your internet connection, the better quality gets. Using a good encoder helps you get better quality at a given bitrate.
+
+Encoder options:
+* x264 software encoder - You can consider encoding the video with your CPU if you have plenty of CPU cores (more than four is a good rule). AMD's Ryzen 7 and higher end Ryzen 5 chips are good candidates for this. Intel's i7-6800K, i7-5820K, and upcoming i7-8700K should also do well. Using the CPU gives the best quality.
+![OBS software encoding](https://serrintine.github.io/StreamDoc/img/obsenc1.png "OBS software encoding")
+* Intel QuickSync - If you have an Intel CPU with integrated graphics, like the i7-4970 or i5-6600K, this is an option. Intel designed circuitry that can encode video into most of their consumer CPUs. Using that frees up CPU cores for other tasks, like running ESO. It's very fast, but gives lower quality. 
+![OBS software encoding](https://serrintine.github.io/StreamDoc/img/obsqsv.png "OBS software encoding")
 ## Play from VLC
 Open VLC. Select "Open Network Stream":
 
