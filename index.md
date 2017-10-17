@@ -25,6 +25,13 @@ You'll want to add the following rules:
 
 Port 22 is the standard SSH port. Port 1935 is for the RTMP server. Port 5001 is for iperf to assess your server's network bandwidth (this is extra and totally not necessary for just setting up a stream so feel free to not include).
 
+# Install Bash on Ubuntu on Windows 10 (or Putty)
+If you have Windows 10, follow the [instructions here](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) to get a Bash shell working on your system. Everything after this section involves issuing text commands in a terminal and Bash is by far a superior command line experience than the default Windows command prompt.
+
+If you do not have Windows 10 or do not wish to install Bash on Ubuntu on Windows 10, then follow the [instructions here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html) to use Putty to access your shiny new server.
+
+The Putty method is very annoying and long-winded. I suggest just installing the Bash prompt.
+
 ## Setup RTMP server
 First log into the server you've created. Linux servers are managed via SSH, which stands for secure shell. You get to issue text commands, and everything that happens between you and the server is encrypted. 
 ```bash
