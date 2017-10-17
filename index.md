@@ -113,5 +113,6 @@ If you ever need to edit the file again, you'll need to reload Nginx for the cha
 ```
 sudo /usr/local/nginx/sbin/nginx -s reload
 ```
-People already using your server won't be affected until their connection closes. 
+People already using your server won't be affected until their connection closes.
+
 ## Setup OBS
