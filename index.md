@@ -13,9 +13,51 @@ Once your account is running you should be able to see a dashboard of all the se
 ## Setup RTMP server
 
 First log into the server you've created. Linux servers are managed via SSH, which stands for secure shell. You get to issue text commands, and everything that happens between you and the server is encrypted. 
-
+```bash
+chmod 400 <key file>
+ssh -i <key file> <user>@<server>
+```
+For example:
 ![SSH](https://serrintine.github.io/StreamDoc/img/ssh.png "SSH")
 
+First get an updated list of software you can get through the package manager. Sudo runs a command as root (all the priviledges), and we need those privileges. You'll need Mercurial (to get the Nginx sources) and Git (for the RTMP module sources). The other things in the list are software packages that Nginx needs.
+
+```
+sudo apt-get update
+sudo apt-get -y install mercurial git build-essential libpcre3-dev  zlib1g-dev libssl-dev
+```
+
+Now that the prerequisites are in place, you'll need to grab the Nginx and RTMP module sources. Nginx is a web server program, and the RTMP module's an extension to Nginx that tells it how to handle video streams. 
+
+Nginx developers store and track their code with Mercurial. To grab the code:
+```
+hg clone http://hg.nginx.org/nginx/
+```
+
+The RTMP module is hosted in Github. To grab the source code for that:
+```
+git clone https://github.com/arut/nginx-rtmp-module
+```
+
+Change into the Nginx source directory, and run a script that sets up the build process with the RTMP module:
+```
+cd nginx
+auto/configure --add-module=../nginx-rtmp-module
+```
+That should output a lot of things, and complete without errors:
+![configure output](https://serrintine.github.io/StreamDoc/img/postconfig.png "configure output")
+
+Then compile Nginx with the RTMP module:
+```
+make
+```
+It's going to run for a bit, and finish like this:
+![compile output](https://serrintine.github.io/StreamDoc/img/compiledone.png "compile output")
+
+Now get everything copied to the right place:
+```
+sudo make install
+```
 ## Edit config file
 
 ## Setup OBS
