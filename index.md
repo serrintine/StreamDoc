@@ -10,7 +10,14 @@ Once your account is running you should be able to see a dashboard of all the se
 
 Choose **Ubuntu** as the server OS. You will by default be alloted the free tier server configuration, which is a **t2.micro** instance with 1GB memory and 8GB storage.
 
-## Edit privacy group
+## Edit security group
+Before you can actually access your server from your home computer, you need to create some firewall rules in your server's security group.
+
+In the left hand side menu, navigate to **NETWORK & SECURITY** and click on the **Privacy Groups** item. Your server's privacy group should be automatically selected. Right click on it and select "Edit inbound rules".
+
+You'll want to add the following rules:
+
+Port 22 is the standard SSH port. Port 1935 is for the RTMP server. Port 5001 is for iperf to assess your server's network bandwidth (this is extra and totally not necessary for just setting up a stream so feel free to not include).
 
 ## Setup RTMP server
 
