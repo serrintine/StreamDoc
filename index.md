@@ -12,6 +12,10 @@ Once your account is running you should be able to see a dashboard of all the se
 
 ## Setup RTMP server
 
+First log into the server you've created. Linux servers are managed via SSH, which stands for secure shell. You get to issue text commands, and everything that happens between you and the server is encrypted. 
+
+![SSH](https://serrintine.github.io/StreamDoc/img/ssh.png "SSH")
+
 ## Edit config file
 
 ## Setup OBS
