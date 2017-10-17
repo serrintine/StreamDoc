@@ -1,13 +1,11 @@
-## How to Stream via VLC
+## Setup AWS account
 
-### Setup AWS account
+## Create an EC2 instance
 
-### Create an EC2 instance
+## Edit privacy group
 
-### Edit privacy group
+## Setup RTMP server
 
-### Setup RTMP server
+## Edit config file
 
-### Edit config file
-
-### Setup OBS
+## Setup OBS
