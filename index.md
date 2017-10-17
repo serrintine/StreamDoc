@@ -8,6 +8,8 @@ You will need to complete registration by filling in an extra form, which should
 ## Create an EC2 instance
 Once your account is running you should be able to see a dashboard of all the services AWS provides. Scroll down to **Build a solution** and click on "Launch a virtual machine" to start the steps for creating a free EC2 instance.
 
+Choose **Ubuntu** as the server OS. You will by default be alloted the free tier server configuration, which is a **t2.micro** instance with 1GB memory and 8GB storage.
+
 ## Edit privacy group
 
 ## Setup RTMP server
