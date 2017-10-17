@@ -1,3 +1,12 @@
+# Table of Contents
+1. Setup AWS account
+2. Create an EC2 instance
+3. Edit security group
+4. Install Bash on Ubuntu on Windows 10 (or Putty)
+5. Setup RTMP server
+6. Edit config file
+7. Setup custom OBS stream
+
 ## Setup AWS account
 Go to [https://aws.amazon.com/free/](https://aws.amazon.com/free/) to sign up for a free AWS account.
 
@@ -25,8 +34,10 @@ You'll want to add the following rules:
 
 Port 22 is the standard SSH port. Port 1935 is for the RTMP server. Port 5001 is for iperf to assess your server's network bandwidth (this is extra and totally not necessary for just setting up a stream so feel free to not include).
 
-# Install Bash on Ubuntu on Windows 10 (or Putty)
+## Install Bash on Ubuntu on Windows 10 (or Putty)
 If you have Windows 10, follow the [instructions here](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) to get a Bash shell working on your system. Everything after this section involves issuing text commands in a terminal and Bash is by far a superior command line experience than the default Windows command prompt.
+
+Make sure that you pick **Ubuntu** as your Linux distribution of choice.
 
 If you do not have Windows 10 or do not wish to install Bash on Ubuntu on Windows 10, then follow the [instructions here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html) to use Putty to access your shiny new server.
 
@@ -121,8 +132,7 @@ If you ever need to edit the file again, you'll need to reload Nginx for the cha
 sudo /usr/local/nginx/sbin/nginx -s reload
 ```
 People already using your server won't be affected until their connection closes.
-
-## Setup OBS
+## Setup custom OBS stream
 In Settings -> Stream, select "Custom Streaming Server" for stream type. The URL will be rtmp://server/live, where server is your server. If you're using Amazon EC2, use the Public DNS there.
 
 Pick anything for the stream key.
@@ -136,4 +146,3 @@ Open VLC
 
 Enter the server URL from above along with the stream key:
 ![vlc open stream](https://serrintine.github.io/StreamDoc/img/vlcopenstream1.png "vlc open stream")
-
