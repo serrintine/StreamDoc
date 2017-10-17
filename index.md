@@ -86,6 +86,7 @@ You should see something like this:
 
 Use arrow keys to get to the bottom of the file,
 ![nano](https://serrintine.github.io/StreamDoc/img/nanoconfbottom.png "nano")
+
 Then add this:
 ```
 rtmp {
