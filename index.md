@@ -141,8 +141,10 @@ Pick anything for the stream key.
 Then, start streaming as you would with Twitch, but hitting the "Start Streaming" button.
 
 ## Play from VLC
-Open VLC 
+Open VLC. Select "Open Network Stream":
+
 ![open vlc stream](https://serrintine.github.io/StreamDoc/img/vlcopenstream.png "open vlc stream")
 
-Enter the server URL from above along with the stream key:
+In the box that pops up, enter the server URL from above along with the stream key:
+
 ![vlc open stream](https://serrintine.github.io/StreamDoc/img/vlcopenstream1.png "vlc open stream")
