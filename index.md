@@ -26,7 +26,6 @@ You'll want to add the following rules:
 Port 22 is the standard SSH port. Port 1935 is for the RTMP server. Port 5001 is for iperf to assess your server's network bandwidth (this is extra and totally not necessary for just setting up a stream so feel free to not include).
 
 ## Setup RTMP server
-
 First log into the server you've created. Linux servers are managed via SSH, which stands for secure shell. You get to issue text commands, and everything that happens between you and the server is encrypted. 
 ```bash
 chmod 400 <key file>
