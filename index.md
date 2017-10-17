@@ -1,11 +1,11 @@
 # Table of Contents
-#### Setup AWS account
-#### Create an EC2 instance
-#### Edit security group
-#### Install Bash on Ubuntu on Windows 10 (or Putty)
-#### Setup RTMP server
-#### Edit config file
-#### Setup custom OBS stream
+1. Setup AWS account
+2. Create an EC2 instance
+3. Edit security group
+4. Install Bash on Ubuntu on Windows 10 (or Putty)
+5. Setup RTMP server
+6. Edit config file
+7. Setup custom OBS stream
 
 ## Setup AWS account
 Go to [https://aws.amazon.com/free/](https://aws.amazon.com/free/) to sign up for a free AWS account.
