@@ -26,7 +26,7 @@ First get an updated list of software you can get through the package manager. S
 
 ```
 sudo apt-get update
-sudo apt-get -y install mercurial git build-essential libpcre3-dev  zlib1g-dev libssl-dev
+sudo apt-get -y install mercurial git build-essential libpcre3-dev zlib1g-dev libssl-dev
 ```
 
 Now that the prerequisites are in place, you'll need to grab the Nginx and RTMP module sources. Nginx is a web server program, and the RTMP module's an extension to Nginx that tells it how to handle video streams. 
@@ -56,10 +56,43 @@ make
 It's going to run for a bit, and finish like this:
 ![compile output](https://serrintine.github.io/StreamDoc/img/compiledone.png "compile output")
 
-Now get everything copied to the right place:
+Get everything copied to the right place:
 ```
 sudo make install
 ```
 ## Edit config file
+Nginx needs to be told what to do with a config file. That's a set of directions on how it should operate. First get to where the config file is, and open it with nano.
 
+Nano's kind of like notepad, but you can't use your mouse.
+```
+cd /usr/local/nginx/conf
+sudo nano nginx.conf
+```
+You should see something like this:
+![nano](https://serrintine.github.io/StreamDoc/img/nginxconfwithnano.png "nano")
+
+Use arrow keys to get to the bottom of the file,
+![nano](https://serrintine.github.io/StreamDoc/img/nanoconfbottom.png "nano")
+Then add this:
+```
+rtmp {
+  server {
+    listen  1935;
+    chunk_size 4096;
+
+    application live {
+      live on;
+      record off;
+    }
+  }
+}
+
+```
+![nano](https://serrintine.github.io/StreamDoc/img/nanoconfbottom.png "nano")
+Save the file with Ctrl+O, then exit Nano with Ctrl+X.
+
+Finally start the Nginx server:
+```
+sudo /usr/local/nginx/sbin/nginx
+```
 ## Setup OBS
