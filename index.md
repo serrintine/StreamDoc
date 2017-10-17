@@ -25,7 +25,7 @@ You'll want to add the following rules:
 
 Port 22 is the standard SSH port. Port 1935 is for the RTMP server. Port 5001 is for iperf to assess your server's network bandwidth (this is extra and totally not necessary for just setting up a stream so feel free to not include).
 
-# Install Bash on Ubuntu on Windows 10 (or Putty)
+## Install Bash on Ubuntu on Windows 10 (or Putty)
 If you have Windows 10, follow the [instructions here](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) to get a Bash shell working on your system. Everything after this section involves issuing text commands in a terminal and Bash is by far a superior command line experience than the default Windows command prompt.
 
 Make sure that you pick **Ubuntu** as your Linux distribution of choice.
