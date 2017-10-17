@@ -70,7 +70,7 @@ sudo make install
 ## Edit config file
 Nginx needs to be told what to do with a config file. That's a set of directions on how it should operate. First get to where the config file is, and open it with nano.
 
-Nano's kind of like notepad, but you can't use your mouse.
+Nano's like notepad hard mode. You can't use your mouse.
 ```
 cd /usr/local/nginx/conf
 sudo nano nginx.conf
