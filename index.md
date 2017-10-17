@@ -7,15 +7,21 @@ You will need to complete registration by filling in an extra form, which should
 
 ## Create an EC2 instance
 Once your account is running you should be able to see a dashboard of all the services AWS provides. Scroll down to **Build a solution** and click on "Launch a virtual machine" to start the steps for creating a free EC2 instance.
+![Build a solution](https://serrintine.github.io/StreamDoc/img/buildasolution.png "Build a solution")
 
 Choose **Ubuntu** as the server OS. You will by default be alloted the free tier server configuration, which is a **t2.micro** instance with 1GB memory and 8GB storage.
+
+Once your instance is created you should be able to view the dashboard:
+![Dashboard](https://serrintine.github.io/StreamDoc/img/ec2dashboard.png "Dashboard")
 
 ## Edit security group
 Before you can actually access your server from your home computer, you need to create some firewall rules in your server's security group.
 
-In the left hand side menu, navigate to **NETWORK & SECURITY** and click on the **Privacy Groups** item. Your server's privacy group should be automatically selected. Right click on it and select "Edit inbound rules".
+In the left hand side menu, navigate to **NETWORK & SECURITY** and click on the **Security Groups** item. Your server's privacy group should be automatically selected. Right click on it and select "Edit inbound rules".
+![Security Groups](https://serrintine.github.io/StreamDoc/img/securitygroups.png "Security Groups")
 
 You'll want to add the following rules:
+![Inbound Rules](https://serrintine.github.io/StreamDoc/img/inboundrules.png "Inbound Rules")
 
 Port 22 is the standard SSH port. Port 1935 is for the RTMP server. Port 5001 is for iperf to assess your server's network bandwidth (this is extra and totally not necessary for just setting up a stream so feel free to not include).
 
