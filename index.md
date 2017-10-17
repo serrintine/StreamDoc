@@ -20,6 +20,8 @@ Once your account is running you should be able to see a dashboard of all the se
 
 Choose **Ubuntu** as the server OS. You will by default be alloted the free tier server configuration, which is a **t2.micro** instance with 1GB memory and 8GB storage.
 
+You will be prompted to download a private key (a `.pem` file) to your server. Make sure you save it somewhere safe on your computer and do NOT share it with anyone as it is essentially the password to your server.
+
 Once your instance is created you should be able to view the dashboard:
 ![Dashboard](https://serrintine.github.io/StreamDoc/img/ec2dashboard.png "Dashboard")
 
