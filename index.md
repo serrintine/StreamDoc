@@ -165,8 +165,12 @@ The higher you can set your bitrate without killing your internet connection, th
 Encoder options:
 * x264 software encoder - You can consider encoding the video with your CPU if you have plenty of CPU cores (more than four is a good rule). AMD's Ryzen 7 and higher end Ryzen 5 chips are good candidates for this. Intel's i7-6800K, i7-5820K, and upcoming i7-8700K should also do well. Using the CPU gives the best quality.
 ![OBS software encoding](https://serrintine.github.io/StreamDoc/img/obsenc1.png "OBS software encoding")
-* Intel QuickSync - If you have an Intel CPU with integrated graphics, like the i7-4970 or i5-6600K, this is an option. Intel designed circuitry that can encode video into most of their consumer CPUs. Using that frees up CPU cores for other tasks, like running ESO. It's very fast, but gives lower quality. 
-![OBS software encoding](https://serrintine.github.io/StreamDoc/img/obsqsv.png "OBS software encoding")
+* Intel QuickSync - If you have an Intel CPU with integrated graphics, like the i7-4970 or i5-6600K, this is an option. Intel designed circuitry that can encode video into most of their consumer CPUs. Using that frees up CPU cores for other tasks, like running ESO. It's very fast, but gives lower quality than CPU encoding.
+![OBS qsv encoding](https://serrintine.github.io/StreamDoc/img/obsqsv.png "OBS qsv encoding")
+* Nvidia NVENC - If you have a midrange to high end Nvidia GPU from the GTX 600 series or higher, your GPU has video encoding circuitry too. Much like Intel QuickSync, it's fast and doesn't demand much from your CPU, but looks worse than x264 CPU encoding.
+![OBS nvenc encoding](https://serrintine.github.io/StreamDoc/img/obsnvenc.png "OBS nvenc encoding")
+* AMD VCE - If you have an AMD GPU that's newer than the HD 7000 series, you can use AMD VCE. It's pretty bad but may have gotten better, details to follow. 
+
 ## Play from VLC
 Open VLC. Select "Open Network Stream":
 
