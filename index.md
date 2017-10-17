@@ -28,6 +28,8 @@ Port 22 is the standard SSH port. Port 1935 is for the RTMP server. Port 5001 is
 # Install Bash on Ubuntu on Windows 10 (or Putty)
 If you have Windows 10, follow the [instructions here](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) to get a Bash shell working on your system. Everything after this section involves issuing text commands in a terminal and Bash is by far a superior command line experience than the default Windows command prompt.
 
+Make sure that you pick **Ubuntu** as your Linux distribution of choice.
+
 If you do not have Windows 10 or do not wish to install Bash on Ubuntu on Windows 10, then follow the [instructions here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html) to use Putty to access your shiny new server.
 
 The Putty method is very annoying and long-winded. I suggest just installing the Bash prompt.
