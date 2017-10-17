@@ -1,3 +1,12 @@
+# Table of Contents
+#### Setup AWS account
+#### Create an EC2 instance
+#### Edit security group
+#### Install Bash on Ubuntu on Windows 10 (or Putty)
+#### Setup RTMP server
+#### Edit config file
+#### Setup custom OBS stream
+
 ## Setup AWS account
 Go to [https://aws.amazon.com/free/](https://aws.amazon.com/free/) to sign up for a free AWS account.
 
@@ -124,4 +133,4 @@ sudo /usr/local/nginx/sbin/nginx -s reload
 ```
 People already using your server won't be affected until their connection closes.
 
-## Setup OBS
+## Setup custom OBS stream
