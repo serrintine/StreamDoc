@@ -93,13 +93,18 @@ rtmp {
     }
   }
 }
-
 ```
-![nano](https://serrintine.github.io/StreamDoc/img/nanoconfbottom.png "nano")
+![nano](https://serrintine.github.io/StreamDoc/img/editedconf.png "nano")
 Save the file with Ctrl+O, then exit Nano with Ctrl+X.
 
 Finally start the Nginx server:
 ```
 sudo /usr/local/nginx/sbin/nginx
 ```
+
+If you ever need to edit the file again, you'll need to reload Nginx for the changes to take effect:
+```
+sudo /usr/local/nginx/sbin/nginx -s reload
+```
+People already using your server won't be affected until their connection closes. 
 ## Setup OBS
